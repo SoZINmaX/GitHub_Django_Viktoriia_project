@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+
+  postgres-db:
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+
+  web:
+    build: .
+    image: web_project
+    links:
+      - postgres-db:db
+    volumes:
+      - .:/source
+      - static:/project/static 
+      - media:/project/media
+    depends_on:
+      - postgres-db
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+      
+volumes:
+  pgdata: {}
+  static: {}
+  media: {}
