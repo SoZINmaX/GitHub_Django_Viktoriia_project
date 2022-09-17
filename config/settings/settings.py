@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'apps.authentication',
     'apps.website',
     # external_apps
-    
+    'rest_framework',
+    'phonenumber_field',
     # default_apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -110,9 +111,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = config('LANGUAGE_CODE')
 
-TIME_ZONE = 'Europe/Kiev'
+TIME_ZONE = config('TIME_ZONE')
 
 USE_I18N = True
 
