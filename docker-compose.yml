@@ -11,6 +11,15 @@ services:
     ports:
       - 5432:5432
 
+  client:
+    build: client
+    image: client
+    volumes:
+      - ./client:/source
+    command: /bin/bash -c "cd /source/; npm i; npm run dev"
+    ports:
+      - 5173:5173
+
   web:
     build: .
     image: web_project
