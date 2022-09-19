@@ -20,3 +20,11 @@ DATABASES = {
         'ATOMIC_REQUESTS': True
     }
 }
+
+# volumes 
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/project/media/'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = '/project/static/'
