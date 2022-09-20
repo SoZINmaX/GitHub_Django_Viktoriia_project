@@ -1,9 +1,10 @@
 <script setup>
   import HomeVue from '../components/Home.vue';
+import Home from '../components/Home.vue';
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Home />
   </main>
 </template>
