@@ -14,9 +14,8 @@
             }
         },
     async beforeMount () {
-        let response = await fetch('api/v1/comment/list_add/')
-        console.log(response)
-        if (response.status_code === 200){
+        const response = await fetch('api/v1/comment/list_add/')
+        if (response.status === 200){
             this.comments = await response.json()
         }
     }
