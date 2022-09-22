@@ -19,7 +19,7 @@
 
         <div class="row">
           <div class="col-lg-4" data-aos="fade-right">
-            <img src="src/assets/assets/img/scenery/image2.jpg" class="img-fluid" alt="">
+            <img src="src/assets/assets/img/image_1.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>UI/UX Designer &amp; Web Developer.</h3>
@@ -57,14 +57,13 @@
   <section id="portfolio" class="clean-block slider dark" style="margin-bottom: -1px;">
       <div class="container">
           <div class="block-heading">
-              <h2 class="text-info">Slider</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+              <h2 class="text-info">Diplomas</h2>
           </div>
           <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
               <div class="carousel-inner">
-                  <div class="carousel-item active"><img class="w-100 d-block" src="src/assets/assets/img/scenery/image1.jpg" alt="Slide Image"></div>
-                  <div class="carousel-item"><img class="w-100 d-block" src="src/assets/assets/img/scenery/image2.jpg" alt="Slide Image"></div>
-                  <div class="carousel-item"><img class="w-100 d-block" src="src/assets/assets/img/scenery/image3.jpg" alt="Slide Image"></div>
+                  <div class="carousel-item active"><img class="w-100 d-block" src="src/assets/assets/img/scenery/image1.jpeg" alt="Slide Image"></div>
+                  <div class="carousel-item"><img class="w-100 d-block" src="src/assets/assets/img/scenery/image2.jpeg" alt="Slide Image"></div>
+                  <div class="carousel-item"><img class="w-100 d-block" src="src/assets/assets/img/scenery/image3.jpeg" alt="Slide Image"></div>
               </div>
               <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
               <ol class="carousel-indicators">
@@ -76,28 +75,65 @@
       </div>
   </section>
   <section id="review">
-      <div class="container">
-          <div class="row"></div>
-      </div>
-      <div class="container">
-          <div class="d-flex media">
+    <div class="container">
+          <div class="block-heading">
+              <h2 class="text-info">Comments</h2>
+          </div>
+          <div class="carousel slide" data-bs-ride="carousel" id="carousel-2">
+              <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <div class="d-flex media">
               <div class="media-body">
                   <h4>Love this!</h4>
-                  <div><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i></div>
+                  <div>
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
+                  </div>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p>
                   <p><span class="reviewer-name"><strong>John Doe</strong></span><span class="review-date">7 Oct 2015</span></p>
-              </div>
-          </div>
-          <div class="d-flex media">
-              <div class="media-body">
-                  <h4>Fantastic product</h4>
-                  <div><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                  <h4>Love this!</h4>
+                  <div>
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half"></i>
+                  </div>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p>
-                  <p><span class="reviewer-name"><strong>Jane Doe</strong></span><span class="review-date">7 Oct 2015</span></p>
+                  <p><span class="reviewer-name"><strong>John Doe</strong></span><span class="review-date">7 Oct 2015</span></p>
+                  </div>
               </div>
           </div>
-          <div class="col-lg-12 text-center">
-            <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendCommentButton" type="submit">Send Comment</button>
+              <div class="carousel-item">
+                  <div class="d-flex media">
+                    <div class="media-body">
+                      <h4>Fantastic product</h4>
+                        <div><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p>
+                        <p><span class="reviewer-name"><strong>Jane Doe</strong></span><span class="review-date">7 Oct 2015</span></p>
+                        <h4>Fantastic product</h4>
+                        <div><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p>
+                        <p><span class="reviewer-name"><strong>Jane Doe</strong></span><span class="review-date">7 Oct 2015</span></p>
+                      </div>
+                  </div>
+               </div>
+              <div class="carousel-item">
+                  <div class="d-flex media">
+                      <div class="media-body">
+                        <h4>Fantastic product</h4>
+                        <div><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p>
+                        <p><span class="reviewer-name"><strong>Jane Doe</strong></span><span class="review-date">7 Oct 2015</span></p>
+                        <h4>Fantastic product</h4>
+                        <div><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis maximus nisl ac diam feugiat, non vestibulum libero posuere. Vivamus pharetra leo non nulla egestas, nec malesuada orci finibus. </p>
+                        <p><span class="reviewer-name"><strong>Jane Doe</strong></span><span class="review-date">7 Oct 2015</span></p>
+                      </div>
+                   </div>
+               </div>
+              </div>
+              <div><a class="carousel-control-prev" href="#carousel-2" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-2" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>
+              <ol class="carousel-indicators">
+                  <li data-bs-target="#carousel-2" data-bs-slide-to="0" class="active"></li>
+                  <li data-bs-target="#carousel-2" data-bs-slide-to="1"></li>
+                  <li data-bs-target="#carousel-2" data-bs-slide-to="2"></li>
+              </ol>
           </div>
       </div>
   </section>
@@ -122,7 +158,7 @@
                           <div class="col-md-6">
                               <div class="form-group mb-3"><textarea class="form-control" id="message" placeholder="Your Message *" required=""></textarea><small class="form-text text-danger help-block lead"></small></div>
                           </div>
-                          <div class="w-100"></div>
+                          <div class="w-101"></div>
                           <div class="col-lg-12 text-center">
                               <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
                           </div>
