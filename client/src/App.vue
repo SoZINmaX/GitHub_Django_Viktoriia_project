@@ -167,7 +167,7 @@
                           <div class="col-md-6">
                               <div class="form-group mb-3"><input class="form-control" type="text" id="name" placeholder="Your Name *" required v-model="posts.name"><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
                               <div class="form-group mb-3"><input class="form-control" type="email" id="email" placeholder="Your Email *" required v-model="posts.email"><small class="form-text text-danger help-block lead"></small></div>
-                              <div class="form-group mb-3"><input class="form-control" placeholder="Your Phone *" required v-model="number" type="text" @input="acceptNumber"><small class="form-text text-danger help-block lead"></small></div>
+                              <div class="form-group mb-3"><input class="form-control" placeholder="Your Phone *" required v-model="number" type="tel" @input="acceptNumber"><small class="form-text text-danger help-block lead"></small></div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group mb-3"><textarea class="form-control" id="message" placeholder="Your Message *" required v-model="posts.message"></textarea><small class="form-text text-danger help-block lead"></small></div>
@@ -279,7 +279,7 @@ export default {
       methods: {
       handleSubmit() {
 
-      if (this.posts.name && this.posts.phone_number && this.posts.email && this.posts.message && this.validEmail(this.posts.email)) {
+      if (this.posts.name && this.posts.phone_number && this.posts.email && this.posts.message && this.validEmail(this.posts.email) && this.validPhoneNumber(this.posts.phone_number)) {
         console.log(this.posts)
         axios.post('api/v1/client/list_add/', this.posts).then((result)=>{console.warn(result)});
       }
@@ -289,8 +289,10 @@ export default {
       if (!this.posts.name) {
         this.errors.push('Name required.');
       }
-      if (!this.number) {
+      if (!this.posts.phone_number) {
         this.errors.push('Phone number required.');
+      } else if (!this.validPhoneNumber(this.posts.phone_number)) {
+        this.errors.push('Valid phone number required.');
       }
       if (!this.posts.email) {
         this.errors.push('Email required.');
@@ -301,14 +303,20 @@ export default {
         this.errors.push('Message required.');
       }
       },
+      validPhoneNumber: function (phone_number) {
+      var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+      return re.test(phone_number);
+      },
       validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
       },
       acceptNumber() {
-      var x = this.number.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-      this.number = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-      var number_modified = ('+'+'38'+x[1]+x[2]+x[3])
+      var x = this.number.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})/);
+      this.number = !x[2] ? x[1] : '(' + x[1] + ') '+'(' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '');
+      console.log(this.number)
+      var number_modified = ('+'+x[1]+x[2]+x[3]+x[4])
+      console.log(number_modified)
       this.posts.phone_number = number_modified
       }
     },
