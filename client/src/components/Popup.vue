@@ -11,13 +11,15 @@
                           <div class="col-md-6">
                               <div class="form-group mb-3"><textarea class="form-control" id="message" placeholder="Your Comment *" required v-model="post.comment"></textarea><small class="form-text text-danger help-block lead"></small></div>
                           </div>
-                          <div class="w-101"></div>
-                          <div class="col-lg-12 text-center">
-                              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
+                          <div class="button_box">
+                            <div class="w-101"></div>
+                                <div class="col-lg-12 text-center">
+                                <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
+                                <button class="btn btn-primary btn-xl text-uppercase" @click="TogglePopup">Close</button>
+                                </div>
                           </div>
                       </div>
                   </form>
-            <button class="btn btn-primary btn-xl text-uppercase" @click="TogglePopup">Close</button>
         </div>
     </div>
 </template>

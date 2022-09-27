@@ -167,7 +167,7 @@
                           <div class="col-md-6">
                               <div class="form-group mb-3"><input class="form-control" type="text" id="name" placeholder="Your Name *" required v-model="posts.name"><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
                               <div class="form-group mb-3"><input class="form-control" type="email" id="email" placeholder="Your Email *" required v-model="posts.email"><small class="form-text text-danger help-block lead"></small></div>
-                              <div class="form-group mb-3"><input class="form-control" type="tel" placeholder="Your Phone *" required v-model="posts.phone_number"><small class="form-text text-danger help-block lead"></small></div>
+                              <div class="form-group mb-3"><input class="form-control" placeholder="Your Phone *" required v-model="number" type="text" @input="acceptNumber"><small class="form-text text-danger help-block lead"></small></div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group mb-3"><textarea class="form-control" id="message" placeholder="Your Message *" required v-model="posts.message"></textarea><small class="form-text text-danger help-block lead"></small></div>
@@ -196,6 +196,12 @@
           </div>
       </div>
   </footer>
+  <p v-if="errors.length">
+                                <b>Please correct the following error(s):</b>
+                                <ul>
+                                  <li v-for="error in errors">{{ error }}</li>
+                                </ul>
+                              </p>
 </body>
 </template>
 <script >
@@ -205,8 +211,6 @@ import Popup from './components/Popup.vue';
 import * as Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import { trigger } from '@vue/reactivity';
-
 const app = Vue.createApp()
 app.use(VueAxios, axios)
 
@@ -227,17 +231,21 @@ export default {
             TogglePopup
           }
       },
+
       data() {
           return {
               posts:{
                 name: null,
-                phone_number: null,
+                phone_number: '',
                 email: null,
                 message: null,
               },
+              number: '',
               comments: [],
+              errors: [],
           }
       },
+
       computed: {
         comments1() {
           var keyCount = Object.keys(this.comments).length
@@ -267,20 +275,50 @@ export default {
           }
         }
       },
-      methods: {
-        handleSubmit() {
-          console.log(this.posts)
-          axios.post('api/v1/client/list_add/', this.posts).then((result)=>{console.log(result)})
-        }
-      },
 
-  async beforeMount () {
+      methods: {
+      handleSubmit() {
+
+      if (this.posts.name && this.posts.phone_number && this.posts.email && this.posts.message && this.validEmail(this.posts.email)) {
+        console.log(this.posts)
+        axios.post('api/v1/client/list_add/', this.posts).then((result)=>{console.warn(result)});
+      }
+
+      this.errors = [];
+
+      if (!this.posts.name) {
+        this.errors.push('Name required.');
+      }
+      if (!this.number) {
+        this.errors.push('Phone number required.');
+      }
+      if (!this.posts.email) {
+        this.errors.push('Email required.');
+      } else if (!this.validEmail(this.posts.email)) {
+        this.errors.push('Valid email required.');
+      }
+      if (!this.posts.message) {
+        this.errors.push('Message required.');
+      }
+      },
+      validEmail: function (email) {
+      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+      },
+      acceptNumber() {
+      var x = this.number.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+      this.number = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+      var number_modified = ('+'+'38'+x[1]+x[2]+x[3])
+      this.posts.phone_number = number_modified
+      }
+    },
+      async beforeMount () {
       const response = await fetch('api/v1/comment/list_add/')
       if (response.status === 200){
-          this.comments = await response.json()
+      this.comments = await response.json()
       }
+    }
   }
-}
 </script>
 <style scoped>
 /*--------------------------------------------------------------
