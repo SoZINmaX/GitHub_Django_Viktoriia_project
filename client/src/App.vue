@@ -144,7 +144,6 @@
           <div class="col-lg-12 text-center">
               <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendCommentButton" @click="() => TogglePopup('buttonTrigger')">Leave comment</button>
               <component v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')" :is="Popup">
-              <h2>Leave your comment</h2>
               </component>
           </div>
       </div>
@@ -174,7 +173,17 @@
                           </div>
                           <div class="w-101"></div>
                           <div class="col-lg-12 text-center">
-                              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Send Message</button>
+                              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" @click="() => TogglePopupClient('buttonTrigger')">Submit</button>
+                              <component v-if="popupTriggersClient.buttonTrigger" :TogglePopupClient="() => TogglePopupClient('buttonTrigger')" :is="Popupclient">
+                                <h2 v-if="this.status_code === 201">Message was succesfully sent.<p>I will get in touch with You soon.</p></h2>
+                                <h2 v-if="this.response_errors">Sorry, something went wrong.<p>Please correct Your input and try again.</p></h2>
+                                <p v-if="errors.length">
+                                  <b>Please correct the following error(s):</b>
+                                  <ul>
+                                    <li v-for="error in errors">{{ error }}</li>
+                                  </ul>
+                                </p>
+                              </component>
                           </div>
                       </div>
                   </form>
@@ -196,18 +205,13 @@
           </div>
       </div>
   </footer>
-  <p v-if="errors.length">
-                                <b>Please correct the following error(s):</b>
-                                <ul>
-                                  <li v-for="error in errors">{{ error }}</li>
-                                </ul>
-                              </p>
 </body>
 </template>
 <script >
 
 import { ref } from 'vue'
 import Popup from './components/Popup.vue';
+import Popupclient from './components/Popupclient.vue';
 import * as Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -219,16 +223,25 @@ export default {
       
       setup() {
         const popupTriggers = ref({
-          buttonTrigger:false
+          buttonTrigger:false,
+        });
+        const popupTriggersClient = ref({
+          buttonTrigger:false,
         });
 
         const TogglePopup = (trigger) => {
           popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+        };
+        const TogglePopupClient = (trigger) => {
+          popupTriggersClient.value[trigger] = !popupTriggersClient.value[trigger]
         }
         return {
             Popup,
+            Popupclient,
             popupTriggers,
-            TogglePopup
+            TogglePopup,
+            popupTriggersClient,
+            TogglePopupClient,
           }
       },
 
@@ -243,6 +256,8 @@ export default {
               number: '',
               comments: [],
               errors: [],
+              status_code: '',
+              response_errors: '',
           }
       },
 
@@ -279,9 +294,10 @@ export default {
       methods: {
       handleSubmit() {
 
+      this.response_errors = ''
+
       if (this.posts.name && this.posts.phone_number && this.posts.email && this.posts.message && this.validEmail(this.posts.email) && this.validPhoneNumber(this.posts.phone_number)) {
-        console.log(this.posts)
-        axios.post('api/v1/client/list_add/', this.posts).then((result)=>{console.warn(result)});
+        axios.post('api/v1/client/list_add/', this.posts).then(response => (this.status_code = response.status)).catch(error => (this.response_errors = error));
       }
 
       this.errors = [];
@@ -291,42 +307,44 @@ export default {
       }
       if (!this.posts.phone_number) {
         this.errors.push('Phone number required.');
-      } else if (!this.validPhoneNumber(this.posts.phone_number)) {
+      } 
+      else if (!this.validPhoneNumber(this.posts.phone_number)) {
         this.errors.push('Valid phone number required.');
       }
       if (!this.posts.email) {
         this.errors.push('Email required.');
-      } else if (!this.validEmail(this.posts.email)) {
+      } 
+      else if (!this.validEmail(this.posts.email)) {
         this.errors.push('Valid email required.');
       }
       if (!this.posts.message) {
         this.errors.push('Message required.');
       }
-      },
+    },
       validPhoneNumber: function (phone_number) {
       var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
       return re.test(phone_number);
-      },
+    },
       validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
-      },
+    },
       acceptNumber() {
       var x = this.number.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})/);
-      this.number = !x[2] ? x[1] : '(' + x[1] + ') '+'(' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '');
+      this.number = !x[2] ? x[1] :'+' + '(' + x[1] + ') '+'(' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '');
       console.log(this.number)
       var number_modified = ('+'+x[1]+x[2]+x[3]+x[4])
       console.log(number_modified)
       this.posts.phone_number = number_modified
-      }
-    },
+    }
+  },
       async beforeMount () {
       const response = await fetch('api/v1/comment/list_add/')
       if (response.status === 200){
       this.comments = await response.json()
-      }
     }
   }
+}
 </script>
 <style scoped>
 /*--------------------------------------------------------------
