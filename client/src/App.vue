@@ -12,9 +12,8 @@
   <section id="about" class="about">
       <div class="container">
 
-        <div class="section-title">
+        <div class="block-heading">
           <h2>About</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="row">
@@ -22,7 +21,7 @@
             <img src="src/assets/assets/img/image_1.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Psychologist &amp; </h3>
+
             <p class="fst-italic">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
               magna aliqua.
@@ -87,7 +86,7 @@
               <div class="carousel-inner">
                   <div class="carousel-item active">
                     <div class="d-flex media">
-                        <div class="media-body">
+                        <div class="comment-box">
                           <tr v-for="comment in comments1" :key="comment.comment">
                             <td>
                               <h4>{{ comment.name }}</h4>
@@ -102,7 +101,7 @@
                     </div>
                  </div>
                  <div v-if="comments2" class="carousel-item">
-                    <div class="d-flex media">
+                    <div class="comment-box">
                         <div class="media-body">
                           <tr v-for="comment in comments2" :key="comment.comment">
                             <td>
@@ -118,7 +117,7 @@
                     </div>
                  </div>
                 <div v-if="comments3" class="carousel-item" >
-                    <div class="d-flex media">
+                    <div class="comment-box">
                         <div class="media-body">
                           <tr v-for="comment in comments3" :key="comment.comment">
                             <td>
@@ -166,17 +165,25 @@
                           <div class="col-md-6">
                               <div class="form-group mb-3"><input class="form-control" type="text" id="name" placeholder="Your Name *" required v-model="posts.name"><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
                               <div class="form-group mb-3"><input class="form-control" type="email" id="email" placeholder="Your Email *" required v-model="posts.email"><small class="form-text text-danger help-block lead"></small></div>
-                              <div class="form-group mb-3"><input class="form-control" placeholder="Your Phone *" required v-model="number" type="tel" @input="acceptNumber"><small class="form-text text-danger help-block lead"></small></div>
+                              <MazPhoneNumberInput
+                              v-model="phoneNumber"
+                              show-code-on-list
+                              color="info"
+                              :preferred-countries="['UA', 'PL', 'FR', 'BE', 'DE', 'US', 'GB']"
+                              :ignored-countries="['AC']"
+                              @update="posts.results = $event"
+                              :success="posts.results?.isValid"
+                            />
                           </div>
                           <div class="col-md-6">
-                              <div class="form-group mb-3"><textarea class="form-control" id="message" placeholder="Your Message *" required v-model="posts.message"></textarea><small class="form-text text-danger help-block lead"></small></div>
+                              <div class="form-group sm-1"><textarea class="form-control" id="message" placeholder="Your Message *" required v-model="posts.message"></textarea><small class="form-text text-danger help-block lead"></small></div>
                           </div>
                           <div class="w-101"></div>
                           <div class="col-lg-12 text-center">
                               <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" @click="() => TogglePopupClient('buttonTrigger')">Submit</button>
                               <component v-if="popupTriggersClient.buttonTrigger" :TogglePopupClient="() => TogglePopupClient('buttonTrigger')" :is="Popupclient">
-                                <h2 v-if="this.status_code === 201">Message was succesfully sent.<p>I will get in touch with You soon.</p></h2>
-                                <h2 v-if="this.response_errors">Sorry, something went wrong.<p>Please correct Your input and try again.</p></h2>
+                                <h4 v-if="this.status_code === 201">Message was succesfully sent.<p>I will get in touch with You soon.</p></h4>
+                                <h4 v-if="this.response_errors">Sorry, something went wrong.<p>Please correct Your input and try again.</p></h4>
                                 <p v-if="errors.length">
                                   <b>Please correct the following error(s):</b>
                                   <ul>
@@ -215,12 +222,17 @@ import Popupclient from './components/Popupclient.vue';
 import * as Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import MazPhoneNumberInput from "maz-ui/components/MazPhoneNumberInput";
+
+
 const app = Vue.createApp()
 app.use(VueAxios, axios)
 
 export default {
       name: "home",
       
+      components: { MazPhoneNumberInput },
+
       setup() {
         const popupTriggers = ref({
           buttonTrigger:false,
@@ -249,15 +261,16 @@ export default {
           return {
               posts:{
                 name: null,
-                phone_number: '',
                 email: null,
                 message: null,
+                results:'',
               },
               number: '',
               comments: [],
               errors: [],
               status_code: '',
               response_errors: '',
+              phoneNumber:'',
           }
       },
 
@@ -295,9 +308,10 @@ export default {
       handleSubmit() {
 
       this.response_errors = ''
+      this.status_code= ''
 
-      if (this.posts.name && this.posts.phone_number && this.posts.email && this.posts.message && this.validEmail(this.posts.email) && this.validPhoneNumber(this.posts.phone_number)) {
-        axios.post('api/v1/client/list_add/', this.posts).then(response => (this.status_code = response.status)).catch(error => (this.response_errors = error));
+      if (this.posts.name && this.posts.results.isValid === true && this.posts.email && this.posts.message && this.validEmail(this.posts.email)) {
+        axios.post('api/v1/client/list_add/', {name: this.posts.name , email: this.posts.email, message: this.posts.message, phone_number: this.posts.results.e164}).then(response => (this.status_code = response.status)).catch(error => (this.response_errors = error));
       }
 
       this.errors = [];
@@ -305,11 +319,8 @@ export default {
       if (!this.posts.name) {
         this.errors.push('Name required.');
       }
-      if (!this.posts.phone_number) {
+      if (!this.posts.results.isValid === true) {
         this.errors.push('Phone number required.');
-      } 
-      else if (!this.validPhoneNumber(this.posts.phone_number)) {
-        this.errors.push('Valid phone number required.');
       }
       if (!this.posts.email) {
         this.errors.push('Email required.');
@@ -321,22 +332,10 @@ export default {
         this.errors.push('Message required.');
       }
     },
-      validPhoneNumber: function (phone_number) {
-      var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-      return re.test(phone_number);
-    },
       validEmail: function (email) {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
-      acceptNumber() {
-      var x = this.number.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})/);
-      this.number = !x[2] ? x[1] :'+' + '(' + x[1] + ') '+'(' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '');
-      console.log(this.number)
-      var number_modified = ('+'+x[1]+x[2]+x[3]+x[4])
-      console.log(number_modified)
-      this.posts.phone_number = number_modified
-    }
   },
       async beforeMount () {
       const response = await fetch('api/v1/comment/list_add/')
@@ -467,4 +466,13 @@ export default {
   max-height: 390px;
 }
 
+.comment-box{
+  padding-left: 130px;
+}
+
+.block-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 </style>

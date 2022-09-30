@@ -36,7 +36,7 @@
     right: 0;
     bottom:0;
     z-index: 99;
-
+    background-color:rgba(0, 0, 0, 0.5);
 
     display: flex;
     align-items:center;
@@ -45,6 +45,7 @@
 
 .popup-inner {
     background-color: #fff;
+    border-radius: 15px;
     padding: 32px;
 }
 
