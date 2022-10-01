@@ -8,17 +8,17 @@
                     <h4 v-if="this.response_errors">Sorry, something went wrong.<p>Please correct Your input and try again.</p></h4>
                     <div class="col-md" v-if="this.status_code != 201">
                         <div class="form-group mb-3"><input class="form-control" type="text" id="name" placeholder="Your Name *" required v-model="post.name"><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
-                        <div class="form-group mb-3"><select class="form-control" type="text" id="text" placeholder="Rate me *" required v-model="post.rate">
-                        <option value="1">Very Dissatisfied</option>
-                        <option value="2">Dissatisfied</option>
-                        <option value="3">Good</option>
-                        <option value="4">Satisfied</option>
+                        <div class="form-group mb-3"><select class="form-control" type="text" id="text" required v-model="post.rate">
                         <option value="5">Very Satisfied</option>
+                        <option value="4">Satisfied</option>
+                        <option value="3">Good</option>
+                        <option value="2">Dissatisfied</option>
+                        <option value="1" selected>Very Dissatisfied</option>
                         </select><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
                         <div class="form-group mb-3"><textarea class="form-control" id="message" placeholder="Your Comment *" required v-model="post.comment"></textarea><small class="form-text text-danger help-block lead"></small></div>
                     </div>
                           <div class="row-cols">
-                                <h4 v-if="this.status_code === 201">Message was succesfully sent.<p>I will get in touch with You soon.</p></h4>
+                                <h4 v-if="this.status_code === 201">Comment was sucessfully added.<p>Thank You for Your time.</p></h4>
                                 <p v-if="errors.length">
                                     <b>Please correct the following error(s):</b>
                                     <ul>
@@ -62,7 +62,7 @@
               post:{
                 name: null,
                 comment: null,
-                rate: null,
+                rate: '5',
               },
               errors: [],
               status_code: '',

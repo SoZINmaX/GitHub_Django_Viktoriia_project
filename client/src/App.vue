@@ -13,7 +13,7 @@
       <div class="container">
 
         <div class="block-heading">
-          <h2>About</h2>
+          <h1>About</h1>
         </div>
 
         <div class="row">
@@ -58,7 +58,7 @@
   <section id="portfolio" class="clean-block slider dark" style="margin-bottom: -1px;">
       <div class="container">
           <div class="block-heading">
-            <h2>Diplomas</h2>
+            <h1>Diplomas</h1>
           </div>
           <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
               <div class="carousel-inner">
@@ -80,7 +80,7 @@
   <section id="review">
     <div class="container">
           <div class="block-heading">
-            <h2>Comments</h2>
+            <h1>Comments</h1>
           </div>
           <div class="carousel slide" data-bs-ride="carousel" id="carousel-2">
               <div class="carousel-inner">
@@ -91,7 +91,11 @@
                             <td>
                               <h4>{{ comment.name }}</h4>
                               <div>
-                                  <i class="fa fa-star">{{comment.rate}}</i>
+                                  <p v-if="comment.rate == 1">⭐️</p>
+                                  <p v-if="comment.rate == 2">⭐️⭐️</p>
+                                  <p v-if="comment.rate == 3">⭐️⭐️⭐️</p>
+                                  <p v-if="comment.rate == 4">⭐️⭐️⭐️⭐️</p>
+                                  <p v-if="comment.rate == 5">⭐️⭐️⭐️⭐️⭐️</p>
                               </div>
                               <p>{{ comment.comment }}</p>
                               <p><span class="reviewer-name"></span><span class="review-date">{{ comment.date }}</span></p>
@@ -107,7 +111,11 @@
                             <td>
                               <h4>{{ comment.name }}</h4>
                               <div>
-                                  <i class="fa fa-star">{{comment.rate}}</i>
+                                  <p v-if="comment.rate == 1">⭐️</p>
+                                  <p v-if="comment.rate == 2">⭐️⭐️</p>
+                                  <p v-if="comment.rate == 3">⭐️⭐️⭐️</p>
+                                  <p v-if="comment.rate == 4">⭐️⭐️⭐️⭐️</p>
+                                  <p v-if="comment.rate == 5">⭐️⭐️⭐️⭐️⭐️</p>
                               </div>
                               <p>{{ comment.comment }}</p>
                               <p><span class="reviewer-name"></span><span class="review-date">{{ comment.date }}</span></p>
@@ -123,7 +131,11 @@
                             <td>
                               <h4>{{ comment.name }}</h4>
                               <div>
-                                  <i class="fa fa-star">{{comment.rate}}</i>
+                                  <p v-if="comment.rate == 1">⭐️</p>
+                                  <p v-if="comment.rate == 2">⭐️⭐️</p>
+                                  <p v-if="comment.rate == 3">⭐️⭐️⭐️</p>
+                                  <p v-if="comment.rate == 4">⭐️⭐️⭐️⭐️</p>
+                                  <p v-if="comment.rate == 5">⭐️⭐️⭐️⭐️⭐️</p>
                               </div>
                               <p>{{ comment.comment }}</p>
                               <p><span class="reviewer-name"></span><span class="review-date">{{ comment.date }}</span></p>
@@ -182,7 +194,7 @@
                           <div class="col-lg-12 text-center">
                               <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" @click="() => TogglePopupClient('buttonTrigger')">Submit</button>
                               <component v-if="popupTriggersClient.buttonTrigger" :TogglePopupClient="() => TogglePopupClient('buttonTrigger')" :is="Popupclient">
-                                <h4 v-if="this.status_code === 201">Message was succesfully sent.<p>I will get in touch with You soon.</p></h4>
+                                <h4 v-if="this.status_code === 201">Message was sucessfully sent.<p>I will get in touch with You soon.</p></h4>
                                 <h4 v-if="this.response_errors">Sorry, something went wrong.<p>Please correct Your input and try again.</p></h4>
                                 <p v-if="errors.length">
                                   <b>Please correct the following error(s):</b>
@@ -204,9 +216,9 @@
           <div class="row">
               <div class="col-md-12">
                   <ul class="list-inline social-buttons">
-                      <li class="list-inline-item"><a href="https://www.tiktok.com/@belinskaya_victoriya?is_from_webapp=1&sender_device=pc"><i class="fa fa-twitter"></i></a></li>
-                      <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                      <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                      <li class="list-inline-item"><a href="https://www.tiktok.com/@belinskaya_victoriya?is_from_webapp=1&sender_device=pc"><i class="fab fa-tiktok fa-1x"></i></a></li>
+                      <li class="list-inline-item"><a href="https://www.youtube.com/channel/UCCfbZnRGt6kE58DULc3BNUA"><i class="fab fa-youtube fa-1x"></i></a></li>
+                      <li class="list-inline-item"><a href="https://www.instagram.com/belinskaya_victoriya/"><i class="fab fa-instagram"></i></a></li>
                   </ul>
               </div>
           </div>
@@ -462,17 +474,14 @@ export default {
   margin-bottom: 0;
 }
 
-.img-fluid {
-  max-height: 390px;
-}
-
 .comment-box{
-  padding-left: 130px;
+  margin-left: 13%;
 }
 
 .block-heading {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 40px;
 }
 </style>
