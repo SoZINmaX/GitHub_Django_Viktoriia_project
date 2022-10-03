@@ -5,7 +5,7 @@ from .permissions import IsAdminReadOnly
 
 
 class CommentAPIView(generics.ListCreateAPIView): 
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.order_by('-rate', '-date')
     serializer_class = CommentSerializer
     
    

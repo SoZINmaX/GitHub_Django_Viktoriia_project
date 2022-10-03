@@ -16,10 +16,9 @@ def run(ctx):
            '--processes 2 '
            '--offload-threads 4 '
            '--enable-threads '
-           '--static-map /static=/project/static')
+           '--static-map /static=/project/static'
+           ' --py-autoreload 1')
 
-    if os.getenv('PY_AUTORELOAD'):
-        cmd += ' --py-autoreload 1'
-    else:
-        cmd += ' --harakiri 30'
+
+    cmd += ' --harakiri 30'
     ctx.run(cmd)

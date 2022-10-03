@@ -479,7 +479,8 @@ progress{
 }
 .img-fluid{
     max-width:100%;
-    height:auto
+    height:360px;
+    
 }
 .img-thumbnail{
     padding:.25rem;
@@ -6589,7 +6590,7 @@ textarea.form-control-lg{
 }
 .w-100{
     width:100% !important;
-    height: 600px
+    height: auto
 }
 .w-101{
     width:100% !important
