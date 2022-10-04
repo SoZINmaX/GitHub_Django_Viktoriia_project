@@ -28,3 +28,8 @@ MEDIA_ROOT = '/project/media/'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/project/static/'
+
+# celery
+
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = config('CELERY_RESULT_BACKEND')

@@ -4,6 +4,7 @@ services:
 
   postgres-db:
     image: postgres
+    restart: unless-stopped
     env_file:
       - .env
     volumes:
@@ -20,9 +21,31 @@ services:
     ports:
       - 5173:5173
 
+  redis:
+    image: redis
+  
+  celery:
+    build: .
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - .:/source
+      - static:/project/static 
+      - media:/project/media
+    command:
+      /bin/bash -c "pip install -r requirements.txt; celery -A config.celery worker -l INFO"
+    depends_on:
+      - postgres-db
+      - redis
+      - web
+    expose:
+      - 8000
+
   web:
     build: .
     image: web_project
+    restart: unless-stopped
     links:
       - postgres-db:db
     volumes:
@@ -37,6 +60,7 @@ services:
 
   nginx:
     image: nginx
+    restart: unless-stopped
     links:
       - web:web
     volumes:
