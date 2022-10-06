@@ -201,10 +201,10 @@
                           <div class="col-lg-12 text-center">
                               <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" @click="() => TogglePopupClient('buttonTrigger')">Записаться на прием</button>
                               <component v-if="popupTriggersClient.buttonTrigger" :TogglePopupClient="() => TogglePopupClient('buttonTrigger')" :is="Popupclient">
-                                <h4 v-if="this.status_code === 201">Message was sucessfully sent.<p>I will get in touch with You soon.</p></h4>
-                                <h4 v-if="this.response_errors">Sorry, something went wrong.<p>Please correct Your input and try again.</p></h4>
+                                <h4 v-if="this.status_code === 201">Сообщение успешно отправлено.<p>Я свяжусь с Вами в близжайшее время.</p></h4>
+                                <h4 v-if="this.response_errors">Извините, что-то пошло не так.<p>Пожалуйста, заполните все поля правильно и попробуйте еще раз.</p></h4>
                                 <p v-if="errors.length">
-                                  <b>Please correct the following error(s):</b>
+                                  <b>Пожалуйста заполните все поля:</b>
                                   <ul>
                                     <li v-for="error in errors">{{ error }}</li>
                                   </ul>

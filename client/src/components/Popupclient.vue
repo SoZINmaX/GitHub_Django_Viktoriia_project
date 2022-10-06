@@ -3,7 +3,7 @@
         <div class="popup-inner">
             <slot />
             
-            <button class="btn btn-primary btn-xl text-uppercase" @click="TogglePopupClient">Close</button>
+            <button class="btn btn-primary btn-xl text-uppercase" @click="TogglePopupClient">Закрыть</button>
                           
         </div>
     </div>
