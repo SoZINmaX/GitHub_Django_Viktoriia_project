@@ -3,8 +3,8 @@
   <header class="masthead" >
       <div class="container">
           <div class="intro-text">
-              <div class="intro-lead-in"><span>Welcome To My Psychology Website!</span></div>
-              <div class="intro-heading text-uppercase"><span>It is Nice To See You Here</span></div><a class="btn btn-primary btn-xl text-uppercase" role="button" href="#about">Tell mE more</a>
+              <div class="intro-lead-in"><span>Добро пожаловать на мой сайт по психологии!</span></div>
+              <div class="intro-heading text-uppercase"><span>Приятно тебя здесь видеть)</span></div><a class="btn btn-primary btn-xl text-uppercase" role="button" href="#about">Узнать больше</a>
           </div>
       </div>
   </header>
@@ -13,40 +13,47 @@
       <div class="container">
 
         <div class="block-heading">
-          <h1>About</h1>
+          <h1>Информация Обо Мне</h1>
         </div>
 
         <div class="row">
           <div class="col-lg-4" data-aos="fade-right">
-            <img src="src/assets/assets/img/image_1.jpg" class="img-fluid" alt="">
+            <img src="src/assets/assets/img/photo.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
 
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              
             </p>
             <div class="row">
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>30 MAY 1997</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456 7890</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York, USA</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>День рождения:</strong> <span>30 МАЯ 1997</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Сайт:</strong> <span>www.example.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Контактный номер:</strong> <span>+123 456 7890</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Страна/ Город:</strong> <span>Украина, Одесса</span></li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>25</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong> <span>email@example.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Возраст:</strong> <span>25</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Степень:</strong> <span>Магистр</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Почта:</strong> <span>email@example.com</span></li>
                 </ul>
               </div>
             </div>
             <p>
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
+              <p><h4>Давайте знакомится как я стала психологом и почему ?</h4></p>
+              <p>Психология мне была интересна всегда,выслушать ,помочь человеку было для меня очень ценно и важно.Мне всегда было интересно знать почему мы так себя ведём, где берет начало то или иное убеждение.Даже в университете ,когда у нас была психология на первом курсе -я готовила доклады с особым трепетом и интересом.</p>
+              <p>Я экономист и долго работала в этой сфере,но я поняла ,что помогать коллегам найти себя,решить конфликт,найти подход к любому человеку или просто выслушать мне намного интереснее,поэтому я решила развернуть свою жизнь на 180° и начать с начала.</p>
+              <ul>
+                <p><h5>Итак, мое образование:</h5></p>
+                <li><i class="bi bi-chevron-right"></i> <strong>⭐️</strong> <span>Психология личности.</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>⭐️</strong> <span>Психология отношений.</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>⭐️</strong> <span>А теперь я дипломированный психолог-консультант.</span></li>
+              </ul>
+              <p>Я практикую клиент-центрированный подход,а также совмещаю разные методики для более эффективного результата .
+              Клиент -центрированный подход подразумевает под собой следование за клиентом, так как все ответы всегда есть в нас самих,иногда нам просто нужна помощь ,что бы их найти.</p>
             </p>
           </div>
         </div>
@@ -58,7 +65,7 @@
   <section id="portfolio" class="clean-block slider dark" style="margin-bottom: -1px;">
       <div class="container">
           <div class="block-heading">
-            <h1>Diplomas</h1>
+            <h1>Мои Дипломы</h1>
           </div>
           <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
               <div class="carousel-inner">
@@ -80,7 +87,7 @@
   <section id="review">
     <div class="container">
           <div class="block-heading">
-            <h1>Comments</h1>
+            <h1>Отзывы и комментарии</h1>
           </div>
           <div class="carousel slide" data-bs-ride="carousel" id="carousel-2">
               <div class="carousel-inner">
@@ -153,7 +160,7 @@
               </ol>
           </div>
           <div class="col-lg-12 text-center">
-              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendCommentButton" @click="() => TogglePopup('buttonTrigger')">Leave comment</button>
+              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendCommentButton" @click="() => TogglePopup('buttonTrigger')">Оставьте комментарий</button>
               <component v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')" :is="Popup">
               </component>
           </div>
@@ -166,8 +173,8 @@
       <div class="container">
           <div class="row">
               <div class="col-lg-12 text-center">
-                  <h2 class="text-uppercase section-heading">Contact Me</h2>
-                  <h3 class="text-muted section-subheading">I will get in touch with You as soon as possible</h3>
+                  <h2 class="text-uppercase section-heading">Связаться со мной</h2>
+                  <h3 class="text-muted section-subheading">Я свяжусь с Вами, когда и как Вам будет удобно</h3>
               </div>
           </div>
           <div class="row">
@@ -192,7 +199,7 @@
                           </div>
                           <div class="w-101"></div>
                           <div class="col-lg-12 text-center">
-                              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" @click="() => TogglePopupClient('buttonTrigger')">Submit</button>
+                              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" @click="() => TogglePopupClient('buttonTrigger')">Записаться на прием</button>
                               <component v-if="popupTriggersClient.buttonTrigger" :TogglePopupClient="() => TogglePopupClient('buttonTrigger')" :is="Popupclient">
                                 <h4 v-if="this.status_code === 201">Message was sucessfully sent.<p>I will get in touch with You soon.</p></h4>
                                 <h4 v-if="this.response_errors">Sorry, something went wrong.<p>Please correct Your input and try again.</p></h4>
@@ -483,5 +490,12 @@ export default {
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
+}
+
+body{
+  /* background-image: url(/src/assets/assets/img/back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; */
+  background-color:rgba(255, 239, 213, 0.856);
 }
 </style>
