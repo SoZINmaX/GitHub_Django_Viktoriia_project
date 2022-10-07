@@ -4,7 +4,7 @@
       <div class="container">
           <div class="intro-text">
               <div class="intro-lead-in"><span>Добро пожаловать на мой сайт по психологии!</span></div>
-              <div class="intro-heading text-uppercase"><span>Приятно тебя здесь видеть)</span></div><a class="btn btn-primary btn-xl text-uppercase" role="button" href="#about">Узнать больше</a>
+              <div class="intro-heading text-uppercase"><span>Рада тебя здесь видеть)</span></div><a class="btn btn-primary btn-xl text-uppercase" role="button" href="#about">Узнать больше</a>
           </div>
       </div>
   </header>
@@ -25,23 +25,6 @@
             <p class="fst-italic">
               
             </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>День рождения:</strong> <span>30 МАЯ 1997</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Сайт:</strong> <span>www.example.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Контактный номер:</strong> <span>+123 456 7890</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Страна/ Город:</strong> <span>Украина, Одесса</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Возраст:</strong> <span>25</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Степень:</strong> <span>Магистр</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Почта:</strong> <span>email@example.com</span></li>
-                </ul>
-              </div>
-            </div>
             <p>
               <p><h4>Давайте знакомится как я стала психологом и почему ?</h4></p>
               <p>Психология мне была интересна всегда,выслушать ,помочь человеку было для меня очень ценно и важно.Мне всегда было интересно знать почему мы так себя ведём, где берет начало то или иное убеждение.Даже в университете ,когда у нас была психология на первом курсе -я готовила доклады с особым трепетом и интересом.</p>
@@ -493,9 +476,6 @@ export default {
 }
 
 body{
-  /* background-image: url(/src/assets/assets/img/back.jpg);
-  background-repeat: no-repeat;
-  background-size: cover; */
   background-color:rgba(255, 239, 213, 0.856);
 }
 </style>
