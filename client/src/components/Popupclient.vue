@@ -3,16 +3,26 @@
         <div class="popup-inner">
             <slot />
             
-            <button class="btn btn-primary btn-xl text-uppercase" @click="TogglePopupClient">Закрыть</button>
+            <button class="btn btn-primary btn-xl text-uppercase" @click="TogglePopupClient">{{ t('close') }}</button>
                           
         </div>
     </div>
 </template>
 
 <script>
+import { useI18n } from 'vue-i18n'
 
     export default {
         name: "Popupclient",
+
+        setup() {
+          const { t, locale } = useI18n({
+              useScope: 'global'
+            })
+          return {t,
+                locale,
+            }
+      },
 
         props: ['TogglePopupClient'],
 

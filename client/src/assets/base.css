@@ -9972,8 +9972,8 @@ header.masthead{
     background-size:cover
 }
 header.masthead .intro-text{
-    padding-top:150px;
-    padding-bottom:100px
+    padding-top:50px;
+    padding-bottom:150px
 }
 header.masthead .intro-text .intro-lead-in{
     font-size:22px;
@@ -9985,13 +9985,13 @@ header.masthead .intro-text .intro-heading{
     font-size:50px;
     font-weight:700;
     line-height:50px;
-    margin-bottom:25px;
+    margin-bottom:100px;
     font-family:"Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif
 }
 @media(min-width: 768px){
     header.masthead .intro-text{
-        padding-top:300px;
-        padding-bottom:200px
+        padding-top:100px;
+        padding-bottom:90px
     }
     header.masthead .intro-text .intro-lead-in{
         font-size:40px;
@@ -10003,7 +10003,7 @@ header.masthead .intro-text .intro-heading{
         font-size:75px;
         font-weight:700;
         line-height:75px;
-        margin-bottom:50px;
+        margin-bottom:150px;
         font-family:"Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif
     }
 }

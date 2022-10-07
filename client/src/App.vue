@@ -2,9 +2,17 @@
   <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54">
   <header class="masthead" >
       <div class="container">
+        <div class="select_language">
+              <select v-model="locale">
+                <option value="en">Русский</option>
+                <option value="ua">Українська</option>
+                <option value="ru">English</option>
+              </select>
+              <span>{{ t('choose language') }}</span>
+          </div>
           <div class="intro-text">
-              <div class="intro-lead-in"><span>Добро пожаловать на мой сайт по психологии!</span></div>
-              <div class="intro-heading text-uppercase"><span>Рада тебя здесь видеть)</span></div><a class="btn btn-primary btn-xl text-uppercase" role="button" href="#about">Узнать больше</a>
+              <div class="intro-lead-in"><span>{{ t('Welcome') }}</span></div>
+              <div class="intro-heading text-uppercase"><span>{{ t('It is Nice To See You Here') }}</span></div><a class="btn btn-primary btn-xl text-uppercase" role="button" href="#about">{{ t('more about myself') }}</a>
           </div>
       </div>
   </header>
@@ -13,7 +21,7 @@
       <div class="container">
 
         <div class="block-heading">
-          <h1>Информация Обо Мне</h1>
+          <h1>{{ t('About') }}</h1>
         </div>
 
         <div class="row">
@@ -26,17 +34,16 @@
               
             </p>
             <p>
-              <p><h4>Давайте знакомится как я стала психологом и почему ?</h4></p>
-              <p>Психология мне была интересна всегда,выслушать ,помочь человеку было для меня очень ценно и важно.Мне всегда было интересно знать почему мы так себя ведём, где берет начало то или иное убеждение.Даже в университете ,когда у нас была психология на первом курсе -я готовила доклады с особым трепетом и интересом.</p>
-              <p>Я экономист и долго работала в этой сфере,но я поняла ,что помогать коллегам найти себя,решить конфликт,найти подход к любому человеку или просто выслушать мне намного интереснее,поэтому я решила развернуть свою жизнь на 180° и начать с начала.</p>
+              <p><h4>{{ t('Lets get acquainted') }}</h4></p>
+              <p>{{ t('Psychology i like') }}</p>
+              <p>{{ t('I was economy') }}</p>
               <ul>
-                <p><h5>Итак, мое образование:</h5></p>
-                <li><i class="bi bi-chevron-right"></i> <strong>⭐️</strong> <span>Психология личности.</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>⭐️</strong> <span>Психология отношений.</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>⭐️</strong> <span>А теперь я дипломированный психолог-консультант.</span></li>
+                <p><h5>{{ t('education') }}</h5></p>
+                <li><i class="bi bi-chevron-right"></i> <strong>⭐️</strong> <span>{{ t('self') }}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>⭐️</strong> <span>{{ t('relations') }}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>⭐️</strong> <span>{{ t('consult') }}</span></li>
               </ul>
-              <p>Я практикую клиент-центрированный подход,а также совмещаю разные методики для более эффективного результата .
-              Клиент -центрированный подход подразумевает под собой следование за клиентом, так как все ответы всегда есть в нас самих,иногда нам просто нужна помощь ,что бы их найти.</p>
+              <p>{{ t('new way') }}</p>
             </p>
           </div>
         </div>
@@ -48,7 +55,7 @@
   <section id="portfolio" class="clean-block slider dark" style="margin-bottom: -1px;">
       <div class="container">
           <div class="block-heading">
-            <h1>Мои Дипломы</h1>
+            <h1>{{ t('diplomas') }}</h1>
           </div>
           <div class="carousel slide" data-bs-ride="carousel" id="carousel-1">
               <div class="carousel-inner">
@@ -70,7 +77,7 @@
   <section id="review">
     <div class="container">
           <div class="block-heading">
-            <h1>Отзывы и комментарии</h1>
+            <h1>{{ t('comments') }}</h1>
           </div>
           <div class="carousel slide" data-bs-ride="carousel" id="carousel-2">
               <div class="carousel-inner">
@@ -143,7 +150,7 @@
               </ol>
           </div>
           <div class="col-lg-12 text-center">
-              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendCommentButton" @click="() => TogglePopup('buttonTrigger')">Оставьте комментарий</button>
+              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendCommentButton" @click="() => TogglePopup('buttonTrigger')">{{ t('leave comment') }}</button>
               <component v-if="popupTriggers.buttonTrigger" :TogglePopup="() => TogglePopup('buttonTrigger')" :is="Popup">
               </component>
           </div>
@@ -156,8 +163,8 @@
       <div class="container">
           <div class="row">
               <div class="col-lg-12 text-center">
-                  <h2 class="text-uppercase section-heading">Связаться со мной</h2>
-                  <h3 class="text-muted section-subheading">Я свяжусь с Вами, когда и как Вам будет удобно</h3>
+                  <h2 class="text-uppercase section-heading">{{ t('call me') }}</h2>
+                  <h3 class="text-muted section-subheading">{{ t('i will call u') }}</h3>
               </div>
           </div>
           <div class="row">
@@ -182,12 +189,12 @@
                           </div>
                           <div class="w-101"></div>
                           <div class="col-lg-12 text-center">
-                              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" @click="() => TogglePopupClient('buttonTrigger')">Записаться на прием</button>
+                              <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" @click="() => TogglePopupClient('buttonTrigger')">{{ t('write') }}</button>
                               <component v-if="popupTriggersClient.buttonTrigger" :TogglePopupClient="() => TogglePopupClient('buttonTrigger')" :is="Popupclient">
-                                <h4 v-if="this.status_code === 201">Сообщение успешно отправлено.<p>Я свяжусь с Вами в близжайшее время.</p></h4>
-                                <h4 v-if="this.response_errors">Извините, что-то пошло не так.<p>Пожалуйста, заполните все поля правильно и попробуйте еще раз.</p></h4>
+                                <h4 v-if="this.status_code === 201">{{ t('success') }}<p>{{ t('i will call u i the nearest') }}</p></h4>
+                                <h4 v-if="this.response_errors">{{ t('sorry') }}<p>{{ t('please fill up') }}</p></h4>
                                 <p v-if="errors.length">
-                                  <b>Пожалуйста заполните все поля:</b>
+                                  <b>{{ t('please fill up all') }}</b>
                                   <ul>
                                     <li v-for="error in errors">{{ error }}</li>
                                   </ul>
@@ -225,6 +232,7 @@ import * as Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import MazPhoneNumberInput from "maz-ui/components/MazPhoneNumberInput";
+import { useI18n } from 'vue-i18n'
 
 
 const app = Vue.createApp()
@@ -232,7 +240,7 @@ app.use(VueAxios, axios)
 
 export default {
       name: "home",
-      
+
       components: { MazPhoneNumberInput },
 
       setup() {
@@ -248,7 +256,10 @@ export default {
         };
         const TogglePopupClient = (trigger) => {
           popupTriggersClient.value[trigger] = !popupTriggersClient.value[trigger]
-        }
+        };
+        const { t, locale } = useI18n({
+          useScope: 'global',
+        })
         return {
             Popup,
             Popupclient,
@@ -256,6 +267,8 @@ export default {
             TogglePopup,
             popupTriggersClient,
             TogglePopupClient,
+            t,
+            locale,
           }
       },
 
@@ -347,6 +360,119 @@ export default {
   }
 }
 </script>
+
+<i18n global="ru">
+  {
+    "ru": {
+      "Welcome": "Welcome to my psychology website!",
+      "choose language": "Choose a language",
+      "It is Nice To See You Here": "It's nice to see you here)",
+      "more about myself":"Learn more",
+      "About":"Information About Me",
+      "Lets get acquainted":"Let's get acquainted with how I became a psychologist and why?",
+      "Psychology i like": "Psychology has always been interesting to me, listening to, helping a person was very valuable and important for me. I was always interested to know why we behave this way, where this or that belief originates. Even at the university, when we had psychology in the first year - I prepared reports with special trepidation and interest.",
+      "I was economy": "I am an economist and worked in this area for a long time, but I realized that helping colleagues to find about themselves, resolve a conflict, find an approach to any person or just listen to them is much more interesting, so I decided to turn my life around 180 ° and start over.",
+      "education":"So my education is:",
+      "self":"Psychology of personality.",
+      "relations":"Psychology of relationships.",
+      "consult":"Now I'm a certified consulting psychologist.",
+      "new way":"I practice a client-centered approach, and also combine different techniques for a more effective result.
+              A client-centered approach means following the client, since all the answers are always in ourselves, sometimes we just need help to find them.",
+      "diplomas":"My diplomas",
+      "comments":"Reviews and comments",
+      "leave comment":"Leave a comment",
+      "call me": "Contact me",
+      "i will call u": "I will call You when and how it is comfortable for You",
+      "write":"Sign up for a consultation",
+      "success":"Message sent successfully",
+      "i will call u i the nearest": "I will contact You shortly.",
+      "sorry":"Sorry, something went wrong.",
+      "please fill up": "Please fill in all fields correctly and try again.",
+      "please fill up all":"Please fill in all fields:",
+      "close":"Close",
+      "5":"Very Satisfied",
+      "4":"Satisfied",
+      "3":"Good",
+      "2":"Dissatisfied",
+      "1":"Very Dissatisfied",
+      "comment ok":"Comment sucessfully added, thanks.",
+      "comment ok reload":"Reload this page to check it out.",
+
+    },
+    "ua": {
+      "Welcome": "Ласкаво прошу на мій сайт із психології!",
+      "choose language": "Оберіть мову",
+      "It is Nice To See You Here":"Рада тебе тут бачити)",
+      "more about myself":"Дізнатися більше",
+      "About":"Інформація Про Мене",
+      "Lets get acquainted":"Давайте знайомитись: як і чому я стала психологом?",
+      "Psychology i like":"Психологія мені була цікава завжди, вислухати, допомогти людині було для мене дуже цінно і важливо. Мені з дитинства було цікаво знати відповідь на питання: «чому ми так себе поводимо, де бере початок те чи інше переконання?». Навіть в університеті, коли в нас була психологія на першому курсі - я готувала доповіді з особливим натхненням та завзятістю.",
+      "I was economy":"Я - економіст і довго працювала в цій сфері, але зрозуміла: що допомагати колегам знайти себе, вирішити конфлікт, знайти підхід до будь-якої людини, або просто вислухати, мені набагато цікавіше; тому я вирішила змінити своє життя на 180° і почати з початку.",
+      "education":"Отже, моя освіта:",
+      "self":"Курс «Практична психологія».",
+      "relations":"Курс «Психологія відносин».",
+      "consult":"А тепер я дипломований психолог-консультант.",
+      "new way": "Я практикую клієнт-центрований підхід, а також поєдную різні методики для більш ефективного результату.
+              Клієнт-центрований підхід має на увазі слідування за клієнтом, тому що всі відповіді завжди є в нас самих, і іноді нам просто потрібна допомога, щоб їх знайти.",
+      "diplomas":"Мої Дипломи",
+      "comments":"Відгуки та коментарі",
+      "leave comment":"Залиште коментар",
+      "call me":"Зв'язатися зі мною",
+      "i will call u":"Я зв'яжуся з Вами, коли і як Вам буде зручно",
+      "write":"Записатися на консультацію",
+      "success":"Повідомлення успішно надіслано",
+      "i will call u i the nearest":"Я зв'яжуся з Вами найближчим часом.",
+      "sorry":"Вибачте, щось пішло не так.",
+      "please fill up":"Будь ласка, заповніть всі поля правильно і спробуйте ще раз.",
+      "please fill up all":"Будь ласка заповніть усі поля:",
+      "close":"Закрити",
+      "5":"Дуже добре",
+      "4":"Добре",
+      "3":"Задовільно",
+      "2":"Незадовільно",
+      "1":"Погано",
+      "comment ok":"Відгук успішно додано, дякую.",
+      "comment ok reload":"Перезавантажте сторінку щоб його побачити.",
+    },
+    "en": {
+      "Welcome": "Добро пожаловать на мой сайт по психологии!",
+      "choose language": "Выберите язык",
+      "It is Nice To See You Here":"Рада тебя здесь видеть)",
+      "more about myself":"Узнать больше",
+      "About":"Информация Обо Мне",
+      "Lets get acquainted":"Давайте знакомится: как и почему я стала психологом?",
+      "Psychology i like":"Психология мне была интересна всегда,выслушать, помочь человеку было для меня очень ценно и важно. Мне с детства было интересно знать ответ на вопрос:«почему мы так себя ведём, где берет начало то или иное убеждение?». Даже в университете, когда у нас была психология на первом курсе, я готовила доклады с особым трепетом и интересом.",
+      "I was economy":"По первому образованию я экономист и долго работала в этой сфере, но я поняла, что помогать коллегам разобраться в себе, решить конфликт, найти подход к любому человеку или просто выслушать - мне намного интереснее, поэтому я решила развернуть свою жизнь на 180* и начать с начала.",
+      "education":"Итак, мое образование:",
+      "self":"Курс «Практическая психология»;",
+      "relations":"Курс «Психология отношений»;",
+      "consult":"А теперь я дипломированный психолог-консультант.",
+      "new way":"Я практикую клиент-центрированный подход,а также совмещаю разные методики для более эффективного результата .
+              Клиент -центрированный подход подразумевает под собой следование за клиентом, так как все ответы всегда есть в нас самих,иногда нам просто нужна помощь ,что бы их найти.",
+      "diplomas":"Мои Дипломы",
+      "comments":"Отзывы и комментарии",
+      "leave comment":"Оставьте комментарий",
+      "call me":"Связаться со мной",
+      "i will call u":"Я свяжусь с Вами, когда и как Вам будет удобно",
+      "write":"Записаться на консультацию",
+      "success":"Сообщение успешно отправлено",
+      "i will call u i the nearest":"Я свяжусь с Вами в близжайшее время.",
+      "sorry":"Извините, что-то пошло не так.",
+      "please fill up":"Пожалуйста, заполните все поля правильно и попробуйте еще раз.",
+      "please fill up all":"Пожалуйста заполните все поля:",
+      "close":"Закрыть",
+      "5":"Отлично",
+      "4":"Хорошо",
+      "3":"Удовлетворительно",
+      "2":"Плохо",
+      "1":"Очень плохо",
+      "comment ok":"Отзыв успешно добавлен, спасибо.",
+      "comment ok reload":"Перезагрузите страницу, чтобы увидеть его.",
+    },
+  }
+  </i18n>
+
+
 <style scoped>
 /*--------------------------------------------------------------
 # Diplomas
@@ -472,10 +598,19 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 body{
   background-color:rgba(255, 239, 213, 0.856);
+}
+
+.select_language {
+    display: flex;
+    flex-direction:column-reverse;
+    align-items:flex-end;
+    padding-top: 120px;
+
+
 }
 </style>

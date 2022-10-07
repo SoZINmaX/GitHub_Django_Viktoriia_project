@@ -2,25 +2,25 @@
     <div class="popup">
         <div class="popup-inner">
             <slot />
-            <h4 v-if="this.status_code != 201 && !this.response_errors">Оставьте комментарий</h4>
+            <h4 v-if="this.status_code != 201 && !this.response_errors">{{t('leave comment')}}</h4>
             <form id="commentForm" name="commentForm" novalidate="novalidate" @submit.prevent="handleSubmit">
                 <div class="row-cols">
-                    <h4 v-if="this.response_errors">Извините, что-то пошло не так.<p>Пожалуйста, попробуйте еще раз.</p></h4>
+                    <h4 v-if="this.response_errors">{{t('sorry')}}<p>{{t('please fill up')}}</p></h4>
                     <div class="col-md" v-if="this.status_code != 201">
                         <div class="form-group mb-3"><input class="form-control" type="text" id="name" placeholder="Your Name *" required v-model="post.name"><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
                         <div class="form-group mb-3"><select class="form-control" type="text" id="text" required v-model="post.rate">
-                        <option value="5">Отлично</option>
-                        <option value="4">Хорошо</option>
-                        <option value="3">Удовлетворительно</option>
-                        <option value="2">Плохо</option>
-                        <option value="1">Очень плохо</option>
+                        <option value="5">{{t('5')}}</option>
+                        <option value="4">{{t('4')}}</option>
+                        <option value="3">{{t('3')}}</option>
+                        <option value="2">{{t('2')}}</option>
+                        <option value="1">{{t('1')}}</option>
                         </select><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
                         <div class="form-group mb-3"><textarea class="form-control" id="message" placeholder="Your Comment *" required v-model="post.comment"></textarea><small class="form-text text-danger help-block lead"></small></div>
                     </div>
                           <div class="row-cols">
-                                <h4 v-if="this.status_code === 201">Отзыв успешно добавлен, спасибо.<p>Перезагрузите страницу, чтобы увидеть его.</p></h4>
+                                <h4 v-if="this.status_code === 201">{{t('comment ok')}}<p>{{t('comment ok reload')}}</p></h4>
                                 <p v-if="errors.length">
-                                    <b>Пожалуйста заполните все поля:</b>
+                                    <b>{{t('please fill up all')}}</b>
                                     <ul>
                                     <li v-for="error in errors">{{ error }}</li>
                                     </ul>
@@ -30,10 +30,10 @@
                             <div class="w-101"></div>
                                 <div class="row">
                                     <div class="form-group mb-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" v-if="this.status_code != 201">Оставить отзыв</button>
+                                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit" v-if="this.status_code != 201">{{t('leave comment')}}</button>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <button class="btn btn-primary btn-xl text-uppercase" @click="TogglePopup">Закрыть</button>
+                                        <button class="btn btn-primary btn-xl text-uppercase" @click="TogglePopup">{{t('close')}}</button>
                                     </div>
                                 </div>
                           </div>
@@ -48,6 +48,7 @@
     import * as Vue from 'vue'
     import axios from 'axios'
     import VueAxios from 'vue-axios'
+    import { useI18n } from 'vue-i18n'
 
     const app = Vue.createApp()
     app.use(VueAxios, axios)
@@ -55,6 +56,14 @@
     export default {
         name: "Popup",
 
+        setup() {
+          const { t, locale } = useI18n({
+              useScope: 'global'
+            })
+          return {t,
+                locale,
+            }
+      },
         props: ['TogglePopup'],
 
         data() {
@@ -95,6 +104,7 @@
     }
 }
 </script>
+
 
 <style scoped>
 
