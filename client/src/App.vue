@@ -240,7 +240,7 @@ app.use(VueAxios, axios)
 
 export default {
       name: "home",
-
+      
       components: { MazPhoneNumberInput },
 
       setup() {
@@ -326,7 +326,7 @@ export default {
       this.status_code= ''
 
       if (this.posts.name && this.posts.results.isValid === true && this.posts.email && this.posts.message && this.validEmail(this.posts.email)) {
-        axios.post('api/v1/client/list_add/', {name: this.posts.name , email: this.posts.email, message: this.posts.message, phone_number: this.posts.results.e164}).then(response => (this.status_code = response.status)).catch(error => (this.response_errors = error));
+        axios.post('api/v1/client/add/', {name: this.posts.name , email: this.posts.email, message: this.posts.message, phone_number: this.posts.results.e164}).then(response => (this.status_code = response.status)).catch(error => (this.response_errors = error));
       }
 
       this.errors = [];
@@ -610,7 +610,6 @@ body{
     flex-direction:column-reverse;
     align-items:flex-end;
     padding-top: 120px;
-
-
 }
+
 </style>

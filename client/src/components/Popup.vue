@@ -117,7 +117,6 @@
     z-index: 99;
     background-color:rgba(0, 0, 0, 0.5);
 
-
     display: flex;
     align-items:center;
     justify-content: center;
@@ -128,6 +127,5 @@
     border-radius: 15px;
     padding: 32px;
 }
-
 
 </style>

@@ -15,7 +15,12 @@ class CommentAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAdminReadOnly, )
     
     
-class ClientAPIView(generics.ListCreateAPIView): 
+class ClientListAPIView(generics.ListAPIView): 
+    queryset = Client.objects.all()
+    serializer_class = ClientSerialier
+    permission_classes = (IsAdminReadOnly, )
+    
+class ClientCreateAPIView(generics.CreateAPIView): 
     queryset = Client.objects.all()
     serializer_class = ClientSerialier
     
