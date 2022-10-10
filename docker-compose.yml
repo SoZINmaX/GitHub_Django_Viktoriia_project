@@ -59,8 +59,9 @@ services:
       - static:/project/static:ro
       - media:/project/media:ro
       - ./client:/source:ro
-    ports:
-      - "80:80"
+    environment:
+      - VIRTUAL_HOST=psychologist.vbelinskaya.com
+      - LETSENCRYPT_HOST=psychologist.vbelinskaya.com
       
 volumes:
   pgdata: {}
