@@ -1,6 +1,6 @@
 import os
 from invoke import task
-
+from decouple import config
 
 @task
 def run(ctx):
@@ -16,9 +16,12 @@ def run(ctx):
            '--processes 2 '
            '--offload-threads 4 '
            '--enable-threads '
-           '--static-map /static=/project/static'
-           ' --py-autoreload 1')
-
-
-    cmd += ' --harakiri 30'
+           '--static-map /static=/project/static')
+    
+    PY_AUTORELOAD = config('PY_AUTORELOAD', default = False)
+    
+    if PY_AUTORELOAD == True:
+          cmd += ' --py-autoreload 1' 
+          cmd += ' --harakiri 30'
+          
     ctx.run(cmd)

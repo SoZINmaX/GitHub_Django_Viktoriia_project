@@ -1,7 +1,7 @@
 from rest_framework import generics
 from .models import Comment, Client
 from .serializers import CommentSerializer, ClientSerialier
-from .permissions import IsAdminReadOnly
+from rest_framework.permissions import IsAdminUser
 
 
 class CommentAPIView(generics.ListCreateAPIView): 
@@ -12,15 +12,21 @@ class CommentAPIView(generics.ListCreateAPIView):
 class CommentAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = (IsAdminReadOnly, )
+    permission_classes = (IsAdminUser, )
     
     
-class ClientAPIView(generics.ListCreateAPIView): 
+class ClientListAPIView(generics.ListAPIView): 
     queryset = Client.objects.all()
     serializer_class = ClientSerialier
+    permission_classes = (IsAdminUser, )
+    
+class ClientCreateAPIView(generics.CreateAPIView): 
+    queryset = Client.objects.all()
+    serializer_class = ClientSerialier
+    throttle_scope = 'create_client'
     
 
 class ClientAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerialier
-    permission_classes = (IsAdminReadOnly, )
+    permission_classes = (IsAdminUser, )

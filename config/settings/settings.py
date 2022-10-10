@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -135,18 +135,47 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'authentication.User'
 
+# permissions
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
    ]
 }
 
+# pagination
+
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
 }
 
+# date/time format
+
 REST_FRAMEWORK = {
     'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
 }
 
+# throttle
+
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle',
+        'rest_framework.throttling.ScopedRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '100/day',
+        'anon': '60/hour',
+        'user': '100/day',
+        'create_client': '20/day',
+    }
+}
+
+CACHE_LOCATION=config('CACHE_LOCATION')
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': CACHE_LOCATION,
+    }
+}
