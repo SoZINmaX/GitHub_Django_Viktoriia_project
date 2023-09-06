@@ -59,6 +59,9 @@ services:
       - static:/project/static:ro
       - media:/project/media:ro
       - ./client:/source:ro
+    networks:
+      - default
+      - proxy
     environment:
       - VIRTUAL_HOST=psychologist.vbelinskaya.com
       - LETSENCRYPT_HOST=psychologist.vbelinskaya.com
@@ -67,3 +70,8 @@ volumes:
   pgdata: {}
   static: {}
   media: {}
+
+networks:
+  default:
+  proxy:
+    external: true

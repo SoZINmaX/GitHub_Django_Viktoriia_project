@@ -18,8 +18,6 @@ server {
     location / {
         root /source/dist;
         expires 15d;
-	index index.html;
-     	try_files $uri $uri/ /index.html;
     }
 
     location ~ ^/(api|admin) {
