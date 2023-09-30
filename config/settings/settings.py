@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -178,4 +178,11 @@ CACHES = {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
         'LOCATION': CACHE_LOCATION,
     }
+}
+# disable DRF UI
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
 }
